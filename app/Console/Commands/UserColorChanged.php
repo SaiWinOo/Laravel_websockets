@@ -12,7 +12,7 @@ class UserColorChanged extends Command
      *
      * @var string
      */
-    protected $signature = 'update:user:color';
+    protected $signature = 'user:color:update';
 
     /**
      * The console command description.
@@ -32,10 +32,11 @@ class UserColorChanged extends Command
         $colors = [
             'red','blue','orange','green','black','yellow','gray'
         ];
-        $user->color = $colors[rand(1,6)];
+        $user->color = $colors[rand(0,6)];
         $user->save();
 
         \App\Events\UserColorChanged::dispatch($user);
+        
 
         return  0;
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\UserColorChanged;
+use App\Http\Controllers\AuthController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -17,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $user = User::where('id',1)->first();
-    return view('welcome',compact('user'));
+    return inertia('Home',['user' => $user]);
 });
+
+Route::get('user/register',[AuthController::class,'register'])->name('user.register');
+Route::post('user/store',[AuthController::class,'store'])->name('user.store');

@@ -25,7 +25,6 @@ class UserColorChanged implements ShouldBroadcast
     public function __construct(User $user)
     {
         $this->user = $user;
-
     }
 
     /**
